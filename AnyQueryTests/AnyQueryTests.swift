@@ -10,27 +10,45 @@ import XCTest
 @testable import AnyQuery
 
 class AnyQueryTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testEqual() {
+        let query = AnyQuery.Equal(key: "id", value: 1)
+        let expected = NSPredicate(format: "id == 1")
+        XCTAssertEqual(query.predicate, expected)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testNotEqual() {
+        let query = AnyQuery.NotEqual(key: "id", value: 1)
+        let expected = NSPredicate(format: "id != 1")
+        XCTAssertEqual(query.predicate, expected)
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testGreaterThan() {
+        let query = AnyQuery.GreaterThan(key: "id", value: 1)
+        let expected = NSPredicate(format: "id > 1")
+        XCTAssertEqual(query.predicate, expected)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testGreaterThanOrEqual() {
+        let query = AnyQuery.GreaterThanOrEqual(key: "id", value: 1)
+        let expected = NSPredicate(format: "id >= 1")
+        XCTAssertEqual(query.predicate, expected)
     }
     
+    func testLessThan() {
+        let query = AnyQuery.LessThan(key: "id", value: 1)
+        let expected = NSPredicate(format: "id < 1")
+        XCTAssertEqual(query.predicate, expected)
+    }
+    
+    func testLessThanOrEqual() {
+        let query = AnyQuery.LessThanOrEqual(key: "id", value: 1)
+        let expected = NSPredicate(format: "id <= 1")
+        XCTAssertEqual(query.predicate, expected)
+    }
+    
+    func testBetween() {
+        let query = AnyQuery.Between(key: "id", lhs: 1, rhs: 10)
+        let expected = NSPredicate(format: "id BETWEEN { 1, 10 }")
+        XCTAssertEqual(query.predicate, expected)
+    }
 }

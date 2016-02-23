@@ -10,6 +10,7 @@
 		3D6E859B1C7C80E7009C43AC /* AnyQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6E859A1C7C80E7009C43AC /* AnyQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D6E85A21C7C80E7009C43AC /* AnyQuery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E85971C7C80E7009C43AC /* AnyQuery.framework */; };
 		3D6E85A71C7C80E7009C43AC /* AnyQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6E85A61C7C80E7009C43AC /* AnyQueryTests.swift */; };
+		3D6E85B21C7C8336009C43AC /* AnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6E85B11C7C8336009C43AC /* AnyQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		3D6E85A11C7C80E7009C43AC /* AnyQueryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyQueryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6E85A61C7C80E7009C43AC /* AnyQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyQueryTests.swift; sourceTree = "<group>"; };
 		3D6E85A81C7C80E7009C43AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D6E85B11C7C8336009C43AC /* AnyQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				3D6E859A1C7C80E7009C43AC /* AnyQuery.h */,
 				3D6E859C1C7C80E7009C43AC /* Info.plist */,
+				3D6E85B11C7C8336009C43AC /* AnyQuery.swift */,
 			);
 			path = AnyQuery;
 			sourceTree = "<group>";
@@ -80,8 +83,8 @@
 		3D6E85A51C7C80E7009C43AC /* AnyQueryTests */ = {
 			isa = PBXGroup;
 			children = (
-				3D6E85A61C7C80E7009C43AC /* AnyQueryTests.swift */,
 				3D6E85A81C7C80E7009C43AC /* Info.plist */,
+				3D6E85A61C7C80E7009C43AC /* AnyQueryTests.swift */,
 			);
 			path = AnyQueryTests;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D6E85B21C7C8336009C43AC /* AnyQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 		3D6E85AC1C7C80E7009C43AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +323,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.naoty.AnyQuery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		3D6E85AD1C7C80E7009C43AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -376,6 +383,7 @@
 				3D6E85AD1C7C80E7009C43AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D6E85AE1C7C80E7009C43AC /* Build configuration list for PBXNativeTarget "AnyQueryTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +392,7 @@
 				3D6E85B01C7C80E7009C43AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
