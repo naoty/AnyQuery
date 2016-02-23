@@ -1,0 +1,14 @@
+PODS:
+  - AnyQuery (0.1.0)
+
+DEPENDENCIES:
+  - AnyQuery (from `..`)
+
+EXTERNAL SOURCES:
+  AnyQuery:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  AnyQuery: 99797fd044e86d185d46c20e4810fe708b72e1b5
+
+COCOAPODS: 0.39.0
