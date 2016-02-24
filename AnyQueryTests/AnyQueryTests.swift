@@ -60,4 +60,18 @@ class AnyQueryTests: XCTestCase {
         XCTAssertEqual(query.predicate, NSPredicate(format: "id BETWEEN { 1, 10 }"))
         XCTAssertEqual(query.dictionary["id"] as? Int, 1)
     }
+    
+    func testLogicalAndOperator() {
+        let query = AnyQuery.Equal(key: "id", value: 1) && AnyQuery.Equal(key: "name", value: "naoty")
+        XCTAssertEqual(query.predicate, NSPredicate(format: "id == 1 AND name == naoty"))
+        XCTAssertEqual(query.dictionary["id"] as? Int, 1)
+        XCTAssertEqual(query.dictionary["name"] as? String, "naoty")
+    }
+    
+    func testLogicalOrOperator() {
+        let query = AnyQuery.Equal(key: "id", value: 1) || AnyQuery.Equal(key: "name", value: "naoty")
+        XCTAssertEqual(query.predicate, NSPredicate(format: "id == 1 OR name == naoty"))
+        XCTAssertEqual(query.dictionary["id"] as? Int, 1)
+        XCTAssertEqual(query.dictionary["name"] as? String, "naoty")
+    }
 }

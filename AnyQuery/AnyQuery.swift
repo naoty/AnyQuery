@@ -66,3 +66,11 @@ indirect public enum AnyQuery {
         }
     }
 }
+
+func && (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
+    return AnyQuery.Tree(lhs: lhs, logic: .And, rhs: rhs)
+}
+
+func || (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
+    return AnyQuery.Tree(lhs: lhs, logic: .Or, rhs: rhs)
+}
