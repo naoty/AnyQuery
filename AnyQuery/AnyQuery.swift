@@ -6,7 +6,11 @@
 //  Copyright © 2016 Naoto Kaneko. All rights reserved.
 //
 
-public enum AnyQuery {
+indirect public enum AnyQuery {
+    // Tree structure
+    case Tree(lhs: AnyQuery, logic: Logic, rhs: AnyQuery)
+    
+    // Basic operations
     case Equal(key: String, value: CustomStringConvertible)
     case NotEqual(key: String, value: CustomStringConvertible)
     case GreaterThan(key: String, value: CustomStringConvertible)
@@ -17,6 +21,13 @@ public enum AnyQuery {
     
     public var predicate: NSPredicate {
         switch self {
+        case .Tree(let query1, let logic, let query2):
+            switch logic {
+            case .And:
+                return NSCompoundPredicate(andPredicateWithSubpredicates: [query1.predicate, query2.predicate])
+            case .Or:
+                return NSCompoundPredicate(orPredicateWithSubpredicates: [query1.predicate, query2.predicate])
+            }
         case .Equal(let key, let value):
             return NSPredicate(format: "\(key) == \(value)")
         case .NotEqual(let key, let value):
@@ -36,6 +47,8 @@ public enum AnyQuery {
     
     public var dictionary: [String: CustomStringConvertible] {
         switch self {
+        case .Tree(let query1, _, let query2):
+            return query1.dictionary.merged(query2.dictionary)
         case .Equal(let key, let value):
             return [key: value]
         case .NotEqual(let key, let value):

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3B8CB61C7DFA9800B76F85 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8CB51C7DFA9800B76F85 /* Logic.swift */; };
+		3D3B8CB81C7E007300B76F85 /* Dictionary+Merging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8CB71C7E007300B76F85 /* Dictionary+Merging.swift */; };
 		3D6E859B1C7C80E7009C43AC /* AnyQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6E859A1C7C80E7009C43AC /* AnyQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D6E85A21C7C80E7009C43AC /* AnyQuery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D6E85971C7C80E7009C43AC /* AnyQuery.framework */; };
 		3D6E85A71C7C80E7009C43AC /* AnyQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6E85A61C7C80E7009C43AC /* AnyQueryTests.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D3B8CB51C7DFA9800B76F85 /* Logic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
+		3D3B8CB71C7E007300B76F85 /* Dictionary+Merging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merging.swift"; sourceTree = "<group>"; };
 		3D6E85971C7C80E7009C43AC /* AnyQuery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyQuery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D6E859A1C7C80E7009C43AC /* AnyQuery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnyQuery.h; sourceTree = "<group>"; };
 		3D6E859C1C7C80E7009C43AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 				3D6E859A1C7C80E7009C43AC /* AnyQuery.h */,
 				3D6E859C1C7C80E7009C43AC /* Info.plist */,
 				3D6E85B11C7C8336009C43AC /* AnyQuery.swift */,
+				3D3B8CB71C7E007300B76F85 /* Dictionary+Merging.swift */,
+				3D3B8CB51C7DFA9800B76F85 /* Logic.swift */,
 			);
 			path = AnyQuery;
 			sourceTree = "<group>";
@@ -197,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D3B8CB61C7DFA9800B76F85 /* Logic.swift in Sources */,
+				3D3B8CB81C7E007300B76F85 /* Dictionary+Merging.swift in Sources */,
 				3D6E85B21C7C8336009C43AC /* AnyQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
