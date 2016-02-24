@@ -33,4 +33,23 @@ public enum AnyQuery {
             return NSPredicate(format: "\(key) BETWEEN { \(lhs), \(rhs) }")
         }
     }
+    
+    public var dictionary: [String: CustomStringConvertible] {
+        switch self {
+        case .Equal(let key, let value):
+            return [key: value]
+        case .NotEqual(let key, let value):
+            return [key: value]
+        case .GreaterThan(let key, let value):
+            return [key: value]
+        case .GreaterThanOrEqual(let key, let value):
+            return [key: value]
+        case .LessThan(let key, let value):
+            return [key: value]
+        case .LessThanOrEqual(let key, let value):
+            return [key: value]
+        case .Between(let key, let lhs, _):
+            return [key: lhs]
+        }
+    }
 }
