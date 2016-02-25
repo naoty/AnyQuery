@@ -1,6 +1,10 @@
 # AnyQuery
 
+[![Build Status](https://travis-ci.org/naoty/AnyQuery.svg?branch=master)](https://travis-ci.org/naoty/AnyQuery)
+
 ## Usage
+
+### AnyQuery
 
 `AnyQuery` is a representation of queries for anything. A `AnyQuery` can be transformed into a `NSPredicate` and a `Dictionary`.
 
@@ -51,6 +55,12 @@ sort.dictionary       //=> ["sort": ["name", "-age"]]
 ```
 
 ## Installation
+
+### Carthage
+
+```rb
+github "naoty/AnyQuery"
+```
 
 ### CocoaPods
 
