@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2CCB081C7EC88700152924 /* AnySort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2CCB071C7EC88700152924 /* AnySort.swift */; };
+		3D2CCB0A1C7F4A8A00152924 /* AnySortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2CCB091C7F4A8A00152924 /* AnySortTests.swift */; };
 		3D3B8CB61C7DFA9800B76F85 /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8CB51C7DFA9800B76F85 /* Logic.swift */; };
 		3D3B8CB81C7E007300B76F85 /* Dictionary+Merging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3B8CB71C7E007300B76F85 /* Dictionary+Merging.swift */; };
 		3D6E859B1C7C80E7009C43AC /* AnyQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D6E859A1C7C80E7009C43AC /* AnyQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D2CCB071C7EC88700152924 /* AnySort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySort.swift; sourceTree = "<group>"; };
+		3D2CCB091C7F4A8A00152924 /* AnySortTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySortTests.swift; sourceTree = "<group>"; };
 		3D3B8CB51C7DFA9800B76F85 /* Logic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
 		3D3B8CB71C7E007300B76F85 /* Dictionary+Merging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merging.swift"; sourceTree = "<group>"; };
 		3D6E85971C7C80E7009C43AC /* AnyQuery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyQuery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +84,7 @@
 				3D6E859A1C7C80E7009C43AC /* AnyQuery.h */,
 				3D6E859C1C7C80E7009C43AC /* Info.plist */,
 				3D6E85B11C7C8336009C43AC /* AnyQuery.swift */,
+				3D2CCB071C7EC88700152924 /* AnySort.swift */,
 				3D3B8CB71C7E007300B76F85 /* Dictionary+Merging.swift */,
 				3D3B8CB51C7DFA9800B76F85 /* Logic.swift */,
 			);
@@ -91,6 +96,7 @@
 			children = (
 				3D6E85A81C7C80E7009C43AC /* Info.plist */,
 				3D6E85A61C7C80E7009C43AC /* AnyQueryTests.swift */,
+				3D2CCB091C7F4A8A00152924 /* AnySortTests.swift */,
 			);
 			path = AnyQueryTests;
 			sourceTree = "<group>";
@@ -203,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2CCB081C7EC88700152924 /* AnySort.swift in Sources */,
 				3D3B8CB61C7DFA9800B76F85 /* Logic.swift in Sources */,
 				3D3B8CB81C7E007300B76F85 /* Dictionary+Merging.swift in Sources */,
 				3D6E85B21C7C8336009C43AC /* AnyQuery.swift in Sources */,
@@ -213,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2CCB0A1C7F4A8A00152924 /* AnySortTests.swift in Sources */,
 				3D6E85A71C7C80E7009C43AC /* AnyQueryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
