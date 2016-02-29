@@ -13,7 +13,7 @@ indirect public enum AnySort {
     case Ascending(key: String)
     case Descending(key: String)
     
-    var sortDescriptors: [NSSortDescriptor] {
+    public var sortDescriptors: [NSSortDescriptor] {
         switch self {
         case .Tree(let lhs, let rhs):
             return lhs.sortDescriptors + rhs.sortDescriptors
@@ -24,7 +24,7 @@ indirect public enum AnySort {
         }
     }
     
-    var dictionary: [String: [String]] {
+    public var dictionary: [String: [String]] {
         switch self {
         case .Tree(let lhs, let rhs):
             return lhs.dictionary.merged(rhs.dictionary)
