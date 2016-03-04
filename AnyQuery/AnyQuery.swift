@@ -17,6 +17,7 @@ indirect public enum AnyQuery {
     case GreaterThanOrEqual(key: String, value: CustomStringConvertible)
     case LessThan(key: String, value: CustomStringConvertible)
     case LessThanOrEqual(key: String, value: CustomStringConvertible)
+    case In(key: String, values: [CustomStringConvertible])
     case Between(key: String, lhs: CustomStringConvertible, rhs: CustomStringConvertible)
     
     public var predicate: NSPredicate {
@@ -40,6 +41,9 @@ indirect public enum AnyQuery {
             return NSPredicate(format: "\(key) < \(value)")
         case .LessThanOrEqual(let key, let value):
             return NSPredicate(format: "\(key) <= \(value)")
+        case .In(let key, let values):
+            let joinedValues = values.map { String($0) }.joinWithSeparator(",")
+            return NSPredicate(format: "\(key) IN { \(joinedValues) }")
         case .Between(let key, let lhs, let rhs):
             return NSPredicate(format: "\(key) BETWEEN { \(lhs), \(rhs) }")
         }
@@ -61,6 +65,8 @@ indirect public enum AnyQuery {
             return [key: value]
         case .LessThanOrEqual(let key, let value):
             return [key: value]
+        case .In(let key, let values):
+            return [key: values]
         case .Between(let key, let lhs, _):
             return [key: lhs]
         }

@@ -55,6 +55,16 @@ class AnyQueryTests: XCTestCase {
         XCTAssertEqual(query.dictionary["id"] as? Int, 1)
     }
     
+    func testIn() {
+        let query = AnyQuery.In(key: "id", values: [1, 2, 3])
+        XCTAssertEqual(query.predicate, NSPredicate(format: "id IN { 1, 2, 3 }"))
+        if let ids = query.dictionary["id"] as? [CustomStringConvertible] {
+            XCTAssertEqual(ids[0] as? Int, 1)
+            XCTAssertEqual(ids[1] as? Int, 2)
+            XCTAssertEqual(ids[2] as? Int, 3)
+        }
+    }
+    
     func testBetween() {
         let query = AnyQuery.Between(key: "id", lhs: 1, rhs: 10)
         XCTAssertEqual(query.predicate, NSPredicate(format: "id BETWEEN { 1, 10 }"))
