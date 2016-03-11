@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AnyQuery"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "Soft-typed query for anything"
   s.description      = <<-DESC
                      Soft-typed query for anything such as Web API and Realm
