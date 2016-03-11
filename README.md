@@ -22,6 +22,7 @@ query.dictionary  //=> ["id": 1]
 * `GreaterThanOrEqual(key:value:)`
 * `LessThan(key:value:)`
 * `LessThanOrEqual(key:value:)`
+* `In(key:values:)`
 * `Between(key:lhs:rhs:)`
 
 `AnyQuery` also can be combined with another one with `&&` or `||` operator.
