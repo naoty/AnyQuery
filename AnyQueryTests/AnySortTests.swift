@@ -30,9 +30,15 @@ class AnySortTests: XCTestCase {
         XCTAssertEqual(sort.dictionary, ["sort": ["-id"]])
     }
     
-    func testPlusOperator() {
-        let sort = AnySort.Ascending(key: "name") + AnySort.Descending(key: "age")
+    func testGreaterThanOperator() {
+        let sort = AnySort.Ascending(key: "name") > AnySort.Descending(key: "age")
         XCTAssertEqual(sort.sortDescriptors, [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "age", ascending: false)])
         XCTAssertEqual(sort.dictionary, ["sort": ["name", "-age"]])
+    }
+    
+    func testLessThanOperator() {
+        let sort = AnySort.Ascending(key: "name") < AnySort.Descending(key: "age")
+        XCTAssertEqual(sort.sortDescriptors, [NSSortDescriptor(key: "age", ascending: false), NSSortDescriptor(key: "name", ascending: true)])
+        XCTAssertEqual(sort.dictionary, ["sort": ["-age", "name"]])
     }
 }

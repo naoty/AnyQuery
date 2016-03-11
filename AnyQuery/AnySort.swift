@@ -36,6 +36,10 @@ indirect public enum AnySort {
     }
 }
 
-public func +(lhs: AnySort, rhs: AnySort) -> AnySort {
+public func >(lhs: AnySort, rhs: AnySort) -> AnySort {
     return AnySort.Tree(lhs: lhs, rhs: rhs)
+}
+
+public func <(lhs: AnySort, rhs: AnySort) -> AnySort {
+    return AnySort.Tree(lhs: rhs, rhs: lhs)
 }

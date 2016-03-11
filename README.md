@@ -28,9 +28,7 @@ query.dictionary  //=> ["id": 1]
 `AnyQuery` also can be combined with another one with `&&` or `||` operator.
 
 ```swift
-let equal1 = AnyQuery.Equal(key: "id", value: 1)
-let equal2 = AnyQuery.Equal(key: "name", value: "naoty")
-let query = equal1 && equal2
+let query = AnyQuery.Equal(key: "id", value: 1) && AnyQuery.Equal(key: "name", value: "naoty")
 query.predicate   //=> NSPredicate(format: "id == 1 AND name == naoty")
 query.dictionary  //=> ["id": 1, "name": "naoty"]
 ```
@@ -45,12 +43,10 @@ sort.sortDescriptors  //=> [NSSortDescriptor(key: "id", ascending: true)]
 sort.dictionary       //=> ["sort": ["id"]]
 ```
 
-Like `AnyQuery`, `AnySort` also can be combined with another one with `+` operator.
+Like `AnyQuery`, `AnySort` also can be combined with another one with `>` operator.
 
 ```swift
-let sort1 = AnySort.Ascending(key: "name")
-let sort2 = AnySort.Descending(key: "age")
-let sort = sort1 + sort2
+let sort = AnySort.Ascending(key: "name") > AnySort.Descending(key: "age")
 sort.sortDescriptors  //=> [NSSortDescriptor(key: "name", ascending: true), NSSortDescriptor(key: "age", ascending: false)]
 sort.dictionary       //=> ["sort": ["name", "-age"]]
 ```
