@@ -11,14 +11,14 @@ indirect public enum AnyQuery {
     case Tree(lhs: AnyQuery, logic: Logic, rhs: AnyQuery)
     
     // Basic operations
-    case Equal(key: String, value: CustomStringConvertible)
-    case NotEqual(key: String, value: CustomStringConvertible)
-    case GreaterThan(key: String, value: CustomStringConvertible)
-    case GreaterThanOrEqual(key: String, value: CustomStringConvertible)
-    case LessThan(key: String, value: CustomStringConvertible)
-    case LessThanOrEqual(key: String, value: CustomStringConvertible)
-    case In(key: String, values: [CustomStringConvertible])
-    case Between(key: String, lhs: CustomStringConvertible, rhs: CustomStringConvertible)
+    case Equal(key: String, value: AnyObject)
+    case NotEqual(key: String, value: AnyObject)
+    case GreaterThan(key: String, value: AnyObject)
+    case GreaterThanOrEqual(key: String, value: AnyObject)
+    case LessThan(key: String, value: AnyObject)
+    case LessThanOrEqual(key: String, value: AnyObject)
+    case In(key: String, values: [AnyObject])
+    case Between(key: String, lhs: AnyObject, rhs: AnyObject)
     
     public var predicate: NSPredicate {
         switch self {
@@ -49,7 +49,7 @@ indirect public enum AnyQuery {
         }
     }
     
-    public var dictionary: [String: CustomStringConvertible] {
+    public var dictionary: [String: AnyObject] {
         switch self {
         case .Tree(let query1, _, let query2):
             return query1.dictionary.merged(query2.dictionary)
