@@ -40,6 +40,32 @@ public func >(lhs: AnySort, rhs: AnySort) -> AnySort {
     return AnySort.Tree(lhs: lhs, rhs: rhs)
 }
 
+public func >(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
+    switch (lhs, rhs) {
+    case let (lhs?, rhs?):
+        return lhs > rhs
+    case let (lhs?, nil):
+        return lhs
+    case let (nil, rhs?):
+        return rhs
+    case (nil, nil):
+        return nil
+    }
+}
+
 public func <(lhs: AnySort, rhs: AnySort) -> AnySort {
     return AnySort.Tree(lhs: rhs, rhs: lhs)
+}
+
+public func <(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
+    switch (lhs, rhs) {
+    case let (lhs?, rhs?):
+        return lhs < rhs
+    case let (lhs?, nil):
+        return lhs
+    case let (nil, rhs?):
+        return rhs
+    case (nil, nil):
+        return nil
+    }
 }

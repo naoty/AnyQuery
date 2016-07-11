@@ -77,6 +77,32 @@ public func && (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
     return AnyQuery.Tree(lhs: lhs, logic: .And, rhs: rhs)
 }
 
+public func && (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
+    switch (lhs, rhs) {
+    case let (lhs?, rhs?):
+        return lhs && rhs
+    case let (lhs?, nil):
+        return lhs
+    case let (nil, rhs?):
+        return rhs
+    case (nil, nil):
+        return nil
+    }
+}
+
 public func || (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
     return AnyQuery.Tree(lhs: lhs, logic: .Or, rhs: rhs)
+}
+
+public func || (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
+    switch (lhs, rhs) {
+    case let (lhs?, rhs?):
+        return lhs || rhs
+    case let (lhs?, nil):
+        return lhs
+    case let (nil, rhs?):
+        return rhs
+    case (nil, nil):
+        return nil
+    }
 }

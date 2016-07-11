@@ -77,11 +77,27 @@ class AnyQueryTests: XCTestCase {
         XCTAssertEqual(query.dictionary["id"] as? Int, 1)
         XCTAssertEqual(query.dictionary["name"] as? String, "naoty")
     }
+
+    func testLogicalAndOperatorWithOptinal() {
+        let query1 = AnyQuery.Equal(key: "id", value: 1) && Optional.None
+        XCTAssertEqual(query1!.predicate, NSPredicate(format: "id == 1"))
+
+        let query2 = Optional.None && AnyQuery.Equal(key: "id", value: 1)
+        XCTAssertEqual(query2!.predicate, NSPredicate(format: "id == 1"))
+    }
     
     func testLogicalOrOperator() {
         let query = AnyQuery.Equal(key: "id", value: 1) || AnyQuery.Equal(key: "name", value: "naoty")
         XCTAssertEqual(query.predicate, NSPredicate(format: "id == 1 OR name == naoty"))
         XCTAssertEqual(query.dictionary["id"] as? Int, 1)
         XCTAssertEqual(query.dictionary["name"] as? String, "naoty")
+    }
+
+    func testLogicalOrOperatorWithOptinal() {
+        let query1 = AnyQuery.Equal(key: "id", value: 1) || Optional.None
+        XCTAssertEqual(query1!.predicate, NSPredicate(format: "id == 1"))
+
+        let query2 = Optional.None || AnyQuery.Equal(key: "id", value: 1)
+        XCTAssertEqual(query2!.predicate, NSPredicate(format: "id == 1"))
     }
 }
