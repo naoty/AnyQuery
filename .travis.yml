@@ -1,5 +1,11 @@
 language: objective-c
-osx_image: xcode7.2
-xcode_project: AnyQuery.xcodeproj
-xcode_scheme: AnyQuery
-xcode_sdk: iphonesimulator9.2
+osx_image: xcode8.2
+before_install:
+  - gem install xcpretty -N
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  - xcodebuild -project Timepiece.xcodeproj -scheme "AnyQuery" -sdk iphonesimulator10.2 -destination "platform=iOS Simulator,name=iPhone 6" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - pod lib lint --quick
+
