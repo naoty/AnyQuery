@@ -19,7 +19,7 @@ indirect public enum AnyQuery {
     case lessThanOrEqual(key: String, value: Any)
     case `in`(key: String, values: [Any])
     case between(key: String, lhs: Any, rhs: Any)
-    
+
     public var predicate: NSPredicate {
         switch self {
         case .tree(let query1, let logic, let query2):
@@ -71,10 +71,14 @@ indirect public enum AnyQuery {
             return [key: lhs]
         }
     }
-}
 
-public func && (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
-    return AnyQuery.tree(lhs: lhs, logic: .and, rhs: rhs)
+    public static func && (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
+        return AnyQuery.tree(lhs: lhs, logic: .and, rhs: rhs)
+    }
+
+    public static func || (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
+        return AnyQuery.tree(lhs: lhs, logic: .or, rhs: rhs)
+    }
 }
 
 public func && (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
@@ -88,10 +92,6 @@ public func && (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
     case (nil, nil):
         return nil
     }
-}
-
-public func || (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
-    return AnyQuery.tree(lhs: lhs, logic: .or, rhs: rhs)
 }
 
 public func || (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {

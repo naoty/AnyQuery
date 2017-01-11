@@ -34,10 +34,14 @@ indirect public enum AnySort {
             return ["sort": ["-\(key)"]]
         }
     }
-}
+    
+    public static func >(lhs: AnySort, rhs: AnySort) -> AnySort {
+        return AnySort.tree(lhs: lhs, rhs: rhs)
+    }
 
-public func >(lhs: AnySort, rhs: AnySort) -> AnySort {
-    return AnySort.tree(lhs: lhs, rhs: rhs)
+    public static func <(lhs: AnySort, rhs: AnySort) -> AnySort {
+        return AnySort.tree(lhs: rhs, rhs: lhs)
+    }
 }
 
 public func >(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
@@ -51,10 +55,6 @@ public func >(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
     case (nil, nil):
         return nil
     }
-}
-
-public func <(lhs: AnySort, rhs: AnySort) -> AnySort {
-    return AnySort.tree(lhs: rhs, rhs: lhs)
 }
 
 public func <(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
