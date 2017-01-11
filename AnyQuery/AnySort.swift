@@ -27,7 +27,7 @@ indirect public enum AnySort {
     public var dictionary: [String: [String]] {
         switch self {
         case .tree(let lhs, let rhs):
-            return lhs.dictionary.merged(rhs.dictionary)
+            return lhs.dictionary.merged(with: rhs.dictionary)
         case .ascending(let key):
             return ["sort": [key]]
         case .descending(let key):

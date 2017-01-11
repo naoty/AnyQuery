@@ -52,7 +52,7 @@ indirect public enum AnyQuery {
     public var dictionary: [String: Any] {
         switch self {
         case .tree(let query1, _, let query2):
-            return query1.dictionary.merged(query2.dictionary)
+            return query1.dictionary.merged(with: query2.dictionary)
         case .equal(let key, let value):
             return [key: value]
         case .notEqual(let key, let value):
