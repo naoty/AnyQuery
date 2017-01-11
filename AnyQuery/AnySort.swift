@@ -9,35 +9,35 @@
 import Foundation
 
 indirect public enum AnySort {
-    case Tree(lhs: AnySort, rhs: AnySort)
-    case Ascending(key: String)
-    case Descending(key: String)
+    case tree(lhs: AnySort, rhs: AnySort)
+    case ascending(key: String)
+    case descending(key: String)
     
     public var sortDescriptors: [NSSortDescriptor] {
         switch self {
-        case .Tree(let lhs, let rhs):
+        case .tree(let lhs, let rhs):
             return lhs.sortDescriptors + rhs.sortDescriptors
-        case .Ascending(let key):
+        case .ascending(let key):
             return [NSSortDescriptor(key: key, ascending: true)]
-        case .Descending(let key):
+        case .descending(let key):
             return [NSSortDescriptor(key: key, ascending: false)]
         }
     }
     
     public var dictionary: [String: [String]] {
         switch self {
-        case .Tree(let lhs, let rhs):
+        case .tree(let lhs, let rhs):
             return lhs.dictionary.merged(rhs.dictionary)
-        case .Ascending(let key):
+        case .ascending(let key):
             return ["sort": [key]]
-        case .Descending(let key):
+        case .descending(let key):
             return ["sort": ["-\(key)"]]
         }
     }
 }
 
 public func >(lhs: AnySort, rhs: AnySort) -> AnySort {
-    return AnySort.Tree(lhs: lhs, rhs: rhs)
+    return AnySort.tree(lhs: lhs, rhs: rhs)
 }
 
 public func >(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
@@ -54,7 +54,7 @@ public func >(lhs: AnySort?, rhs: AnySort?) -> AnySort? {
 }
 
 public func <(lhs: AnySort, rhs: AnySort) -> AnySort {
-    return AnySort.Tree(lhs: rhs, rhs: lhs)
+    return AnySort.tree(lhs: rhs, rhs: lhs)
 }
 
 public func <(lhs: AnySort?, rhs: AnySort?) -> AnySort? {

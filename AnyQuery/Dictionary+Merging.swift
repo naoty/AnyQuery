@@ -7,7 +7,7 @@
 //
 
 extension Dictionary {
-    func merged(another: [Key: Value]) -> [Key: Value] {
+    func merged(_ another: [Key: Value]) -> [Key: Value] {
         var result: [Key: Value] = [:]
         for (key, value) in self {
             result[key] = value
@@ -19,8 +19,8 @@ extension Dictionary {
     }
 }
 
-extension Dictionary where Value: RangeReplaceableCollectionType {
-    func merged(another: [Key: Value]) -> [Key: Value] {
+extension Dictionary where Value: RangeReplaceableCollection {
+    func merged(_ another: [Key: Value]) -> [Key: Value] {
         var result: [Key: Value] = [:]
         for (key, value) in self {
             result[key] = value

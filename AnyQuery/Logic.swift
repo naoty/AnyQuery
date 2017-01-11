@@ -7,6 +7,6 @@
 //
 
 public enum Logic {
-    case And
-    case Or
+    case and
+    case or
 }

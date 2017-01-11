@@ -8,73 +8,73 @@
 
 indirect public enum AnyQuery {
     // Tree structure
-    case Tree(lhs: AnyQuery, logic: Logic, rhs: AnyQuery)
+    case tree(lhs: AnyQuery, logic: Logic, rhs: AnyQuery)
     
     // Basic operations
-    case Equal(key: String, value: AnyObject)
-    case NotEqual(key: String, value: AnyObject)
-    case GreaterThan(key: String, value: AnyObject)
-    case GreaterThanOrEqual(key: String, value: AnyObject)
-    case LessThan(key: String, value: AnyObject)
-    case LessThanOrEqual(key: String, value: AnyObject)
-    case In(key: String, values: [AnyObject])
-    case Between(key: String, lhs: AnyObject, rhs: AnyObject)
+    case equal(key: String, value: Any)
+    case notEqual(key: String, value: Any)
+    case greaterThan(key: String, value: Any)
+    case greaterThanOrEqual(key: String, value: Any)
+    case lessThan(key: String, value: Any)
+    case lessThanOrEqual(key: String, value: Any)
+    case `in`(key: String, values: [Any])
+    case between(key: String, lhs: Any, rhs: Any)
     
     public var predicate: NSPredicate {
         switch self {
-        case .Tree(let query1, let logic, let query2):
+        case .tree(let query1, let logic, let query2):
             switch logic {
-            case .And:
+            case .and:
                 return NSCompoundPredicate(andPredicateWithSubpredicates: [query1.predicate, query2.predicate])
-            case .Or:
+            case .or:
                 return NSCompoundPredicate(orPredicateWithSubpredicates: [query1.predicate, query2.predicate])
             }
-        case .Equal(let key, let value):
+        case .equal(let key, let value):
             return NSPredicate(format: "\(key) == \(value)")
-        case .NotEqual(let key, let value):
+        case .notEqual(let key, let value):
             return NSPredicate(format: "\(key) != \(value)")
-        case .GreaterThan(let key, let value):
+        case .greaterThan(let key, let value):
             return NSPredicate(format: "\(key) > \(value)")
-        case .GreaterThanOrEqual(let key, let value):
+        case .greaterThanOrEqual(let key, let value):
             return NSPredicate(format: "\(key) >= \(value)")
-        case .LessThan(let key, let value):
+        case .lessThan(let key, let value):
             return NSPredicate(format: "\(key) < \(value)")
-        case .LessThanOrEqual(let key, let value):
+        case .lessThanOrEqual(let key, let value):
             return NSPredicate(format: "\(key) <= \(value)")
-        case .In(let key, let values):
-            let joinedValues = values.map { String($0) }.joinWithSeparator(",")
+        case .in(let key, let values):
+            let joinedValues = values.map { String(describing: $0) }.joined(separator: ",")
             return NSPredicate(format: "\(key) IN { \(joinedValues) }")
-        case .Between(let key, let lhs, let rhs):
+        case .between(let key, let lhs, let rhs):
             return NSPredicate(format: "\(key) BETWEEN { \(lhs), \(rhs) }")
         }
     }
     
-    public var dictionary: [String: AnyObject] {
+    public var dictionary: [String: Any] {
         switch self {
-        case .Tree(let query1, _, let query2):
+        case .tree(let query1, _, let query2):
             return query1.dictionary.merged(query2.dictionary)
-        case .Equal(let key, let value):
+        case .equal(let key, let value):
             return [key: value]
-        case .NotEqual(let key, let value):
+        case .notEqual(let key, let value):
             return [key: value]
-        case .GreaterThan(let key, let value):
+        case .greaterThan(let key, let value):
             return [key: value]
-        case .GreaterThanOrEqual(let key, let value):
+        case .greaterThanOrEqual(let key, let value):
             return [key: value]
-        case .LessThan(let key, let value):
+        case .lessThan(let key, let value):
             return [key: value]
-        case .LessThanOrEqual(let key, let value):
+        case .lessThanOrEqual(let key, let value):
             return [key: value]
-        case .In(let key, let values):
-            return [key: values]
-        case .Between(let key, let lhs, _):
+        case .in(let key, let values):
+            return [key: values as Any]
+        case .between(let key, let lhs, _):
             return [key: lhs]
         }
     }
 }
 
 public func && (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
-    return AnyQuery.Tree(lhs: lhs, logic: .And, rhs: rhs)
+    return AnyQuery.tree(lhs: lhs, logic: .and, rhs: rhs)
 }
 
 public func && (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
@@ -91,7 +91,7 @@ public func && (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
 }
 
 public func || (lhs: AnyQuery, rhs: AnyQuery) -> AnyQuery {
-    return AnyQuery.Tree(lhs: lhs, logic: .Or, rhs: rhs)
+    return AnyQuery.tree(lhs: lhs, logic: .or, rhs: rhs)
 }
 
 public func || (lhs: AnyQuery?, rhs: AnyQuery?) -> AnyQuery? {
